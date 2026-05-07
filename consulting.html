@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PureFX Small Business Consulting — Less Work. More Money.</title>
+  <meta name="description" content="We help small business owners build systems, get visible, and grow — without burning out. Book your $10 Discovery Call." />
+  <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-2: #1a1a1a;
+      --gray: #2e2e2e;
+      --gray-mid: #555555;
+      --gray-light: #a0a0a0;
+      --gray-pale: #d9d9d9;
+      --white: #ffffff;
+      --yellow: #f5c800;
+      --yellow-hover: #e0b500;
+      --yellow-soft: #fff8d6;
+      --display: 'Barlow Condensed', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .topbar a.brand span,
+    .back-link, .eyebrow,
+    .cta-btn, .pay-btn,
+    .section-label, .vsl-title,
+    .step-num, .benefit-card h3, .step-content h3,
+    .c-service-card h3, .order-label, .order-price,
+    .trust-item, .cta-pretitle {
+      font-family: var(--display);
+      font-feature-settings: "tnum" 1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 0;
+    }
+
+    a { color: inherit; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--black);
+      border-bottom: 1px solid var(--gray);
+      height: 72px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      overflow: visible;
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .topbar a.brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    /* Filter directly on the image; no overflow:hidden anywhere so the
+       drop-shadow halo isn't clipped. */
+    .topbar a.brand {
+      display: block;
+      overflow: visible;
+    }
+
+    .topbar a.brand img {
+      height: 96px;
+      display: block;
+      transform: translate(30%, -10%) !important;
+      mix-blend-mode: lighten;
+      filter: drop-shadow(0 0 80px rgba(245, 200, 0, 1)) drop-shadow(0 0 160px rgba(245, 200, 0, 0.9)) !important;
+    }
+    .topbar a.brand span {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .topbar a.brand span b { color: var(--yellow); font-weight: 800; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--yellow);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .back-link:hover { color: var(--yellow-hover); gap: 10px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 100%);
+      border-bottom: 3px solid var(--yellow);
+      padding: 16px 24px 44px;
+      text-align: center;
+    }
+
+    /* Wrap handles sizing + fade-in only. Filter goes on the image. */
+    .hero-logo-wrap {
+      width: clamp(440px, 78vw, 920px);
+      max-width: 92vw;
+      margin: 0 auto 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+      opacity: 0;
+      animation: heroLogoFade 0.8s cubic-bezier(0.22,1,0.36,1) 0.05s forwards;
+    }
+
+    .hero-logo {
+      display: block;
+      width: 100%;
+      height: auto;
+      position: relative;
+      /* Nudge 2% left from flex-centered position. */
+      transform: translateX(-2%) !important;
+      mix-blend-mode: lighten;
+      filter: drop-shadow(0 0 80px rgba(245, 200, 0, 1)) drop-shadow(0 0 160px rgba(245, 200, 0, 0.9)) !important;
+    }
+
+    /* Sub-wordmark — flows as a sibling below the logo wrap.
+       Negative margin-top pulls it up into the wrap's empty bottom area
+       (where the file's blended-out PUREFX text used to sit), so it reads
+       as part of the logo without overlapping the visible gold mark. */
+    .hero-logo-tagline {
+      margin: clamp(-80px, -5vw, -32px) auto 24px;
+      font-family: var(--display);
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-align: center;
+      transform: translateX(-0.5%);
+      white-space: nowrap;
+    }
+
+    @keyframes heroLogoFade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5.4vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      max-width: 760px;
+      margin: 0 auto 24px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .hero h1 .line {
+      display: block;
+      white-space: nowrap;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 .line > span {
+      color: var(--yellow);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--gray-light);
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      white-space: nowrap;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      padding: 20px 44px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(245, 200, 0, 0.25);
+      line-height: 1;
+    }
+
+    .cta-btn:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(245, 200, 0, 0.35);
+    }
+
+    .cta-btn:active { transform: translateY(0); }
+
+    .hero-note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--white);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--gray);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-pale);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .trust-item svg { color: var(--yellow); flex-shrink: 0; }
+
+    /* ── VSL ── */
+    .vsl {
+      padding: 54px 24px;
+      background: var(--dark-2);
+    }
+
+    .vsl-card {
+      max-width: 820px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 100%);
+      border: 2px solid var(--yellow);
+      border-radius: 18px;
+      padding: 48px 32px;
+      text-align: center;
+      box-shadow: 0 18px 60px rgba(245,200,0,0.08);
+    }
+
+    .vsl-frame {
+      aspect-ratio: 16 / 9;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(245,200,0,0.08), transparent 70%), var(--black);
+      border: 1px dashed rgba(245,200,0,0.4);
+      border-radius: 12px;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 640px;
+    }
+
+    .vsl-play {
+      width: 84px;
+      height: 84px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(245,200,0,0.35), 0 0 0 8px rgba(245,200,0,0.1);
+    }
+
+    .vsl-play svg { color: var(--black); margin-left: 5px; }
+
+    .vsl-title {
+      font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .vsl-sub {
+      font-size: 1rem;
+      color: var(--gray-light);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── SERVICES (consulting) ── */
+    .c-services {
+      padding: 54px 24px;
+      background: var(--black);
+    }
+
+    .c-services-intro {
+      max-width: 720px;
+      margin: 0 auto 32px;
+      text-align: center;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      color: var(--gray-pale);
+      line-height: 1.75;
+    }
+
+    .c-services-intro strong { color: var(--white); font-weight: 700; }
+
+    .c-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      max-width: 1080px;
+      margin: 0 auto 32px;
+    }
+
+    .c-service-card {
+      background: linear-gradient(180deg, var(--dark-2) 0%, var(--dark) 100%);
+      border: 1px solid var(--gray);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .c-service-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,200,0,0.1);
+    }
+
+    .c-service-card .svc-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--yellow);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .c-service-card .svc-icon svg { color: var(--black); }
+
+    .c-service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: -0.005em;
+      text-transform: uppercase;
+    }
+
+    .c-service-card p {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+    }
+
+    .c-services-outro {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--gray-pale);
+      line-height: 1.75;
+      padding: 28px 24px;
+      background: var(--dark-2);
+      border-left: 3px solid var(--yellow);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* ── BENEFITS ── */
+    .benefits {
+      padding: 54px 24px;
+      background: var(--dark-2);
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin: 0 auto 14px;
+      max-width: 920px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 3.8vw, 2.4rem);
+      font-weight: 900;
+      color: var(--white);
+      margin: 0 auto 36px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+      max-width: 920px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .benefits-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 880px) {
+      .benefits-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    .benefit-card {
+      background: var(--dark-2);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-3px);
+    }
+
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--yellow);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .benefit-icon svg { color: var(--black); }
+
+    .benefit-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 54px 24px;
+      background: var(--black);
+    }
+
+    .steps-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 21px;
+      top: 48px;
+      width: 2px;
+      height: calc(100% - 12px);
+      background: var(--gray);
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 1rem;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-content {
+      background: var(--dark);
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 22px 26px;
+      flex: 1;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .step-content:hover { border-color: var(--yellow); }
+
+    .step-content h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    .step-content p {
+      font-size: 0.92rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+    }
+
+    /* ── CALENDAR ── */
+    .cal-section {
+      padding: 54px 24px;
+      background: var(--dark-2);
+    }
+
+    .cal-shell {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .cal-card {
+      background: var(--dark-2);
+      border: 1px solid var(--gray);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+
+    .cal-card iframe {
+      display: block;
+      width: 100%;
+      border: none;
+      min-height: 700px;
+    }
+
+    .pay-card {
+      background: var(--dark-2);
+      border: 1px solid var(--gray);
+      border-radius: 12px;
+      padding: 36px 36px 32px;
+      text-align: center;
+    }
+
+    .order-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--gray);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+    }
+
+    .order-label { font-size: 0.92rem; font-weight: 600; color: var(--gray-pale); }
+    .order-price { font-size: 1.4rem; font-weight: 900; color: var(--yellow); }
+
+    .pay-btn {
+      display: block;
+      width: 100%;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 1.08rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      padding: 20px 24px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(245,200,0,0.25);
+      line-height: 1.3;
+    }
+
+    .pay-btn:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(245,200,0,0.35);
+    }
+
+    .pay-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 88px 24px 100px;
+      background: var(--dark-2);
+      text-align: center;
+    }
+
+    .cta-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-pretitle {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+
+    .cta-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .cta-body {
+      font-size: 1rem;
+      color: var(--gray-light);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--gray);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+    }
+
+    footer a { color: var(--gray-light); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--yellow); }
+
+    .footer-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ── PAGE LOAD ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero .eyebrow { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.05s forwards; }
+    .hero h1      { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.18s forwards; }
+    .hero-sub     { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.32s forwards; }
+    .hero .cta-btn{ opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.46s forwards; }
+    .hero-note    { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.56s forwards; }
+    .trust-bar    { opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.65s forwards; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      body { padding-top: 0; }
+      .topbar a.brand img { height: 72px; }
+
+      .hero { padding: 16px 20px 48px; }
+      .hero-sub { white-space: normal; max-width: 540px; }
+      .trust-bar { gap: 20px; }
+      .vsl, .c-services, .benefits, .how, .cal-section { padding: 40px 18px; }
+      .vsl-card { padding: 32px 22px; }
+      .c-services-grid { gap: 16px; }
+      .c-service-card { padding: 26px 22px; }
+
+      .cta-btn {
+        padding: 18px 28px;
+        font-size: 0.95rem;
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cal-card { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-logo-wrap">
+      <img src="pfx-marketing-media/pfx-vector.PNG" alt="PureFX" class="hero-logo" />
+    </div>
+    <div class="hero-logo-tagline">Small Business Consultation</div>
+    <h1>
+      <span class="line">Less Work.</span>
+      <span class="line">More Money.</span>
+      <span class="line"><span>Real Growth.</span></span>
+    </h1>
+    <p class="hero-sub">
+      We help small business owners build systems, get visible, and grow — without burning out.
+    </p>
+    <a href="#calendar" class="cta-btn">Book a $10 Discovery Call</a>
+    <p class="hero-note">No commitment. Real strategy.</p>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Built for Small Business
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      No Long-Term Contracts
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Real Strategy
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      $10 to Start
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Owner-Operator Friendly
+    </div>
+  </div>
+
+  <!-- VIDEO SALES LETTER -->
+  <section class="vsl">
+    <p class="section-label fade-up">See How It Works</p>
+    <h2 class="section-title fade-up" data-delay="0.08">Two Minutes That Change Your Business</h2>
+
+    <div class="vsl-card fade-up" data-delay="0.16">
+      <div class="vsl-frame">
+        <div class="vsl-play">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      </div>
+      <p class="vsl-title">Video Coming Soon — Check Back Shortly</p>
+      <p class="vsl-sub">Watch this short video to see exactly how we help small businesses grow.</p>
+    </div>
+  </section>
+
+  <!-- CONSULTING SERVICES -->
+  <section class="c-services">
+    <p class="section-label fade-up">What We Offer</p>
+    <h2 class="section-title fade-up" data-delay="0.08">Consulting Services</h2>
+
+    <p class="c-services-intro fade-up" data-delay="0.14">
+      Our consulting services are <strong>fully catered to your business</strong>. We offer each service individually or as a complete growth package.
+    </p>
+
+    <div class="c-services-grid">
+      <div class="c-service-card fade-up" data-delay="0.18">
+        <div class="svc-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>Custom Content Filming</h3>
+        <p>We film professional advertisements built around your business and brand.</p>
+      </div>
+
+      <div class="c-service-card fade-up" data-delay="0.26">
+        <div class="svc-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 11l18-8-3 18-7-7-8-3z"/><path d="M11 14l5-5"/></svg>
+        </div>
+        <h3>Social Media Advertising</h3>
+        <p>We run your ads across platforms to drive real customers to your business.</p>
+      </div>
+
+      <div class="c-service-card fade-up" data-delay="0.34">
+        <div class="svc-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <h3>Remote Virtual Assistant Installation</h3>
+        <p>We install a trained remote VA into your business to help handle the growth.</p>
+      </div>
+    </div>
+
+    <p class="c-services-outro fade-up" data-delay="0.42">
+      The idea is simple — we bring the customers in, then make sure your business is ready to handle them. Every engagement is built around what your business actually needs.
+    </p>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <p class="section-label fade-up">Why It Works</p>
+    <h2 class="section-title fade-up" data-delay="0.08">All the Headache Handled</h2>
+
+    <div class="benefits-grid benefits-grid-3">
+
+      <div class="benefit-card fade-up" data-delay="0.1">
+        <div class="benefit-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <h3>Look like the brand you really are</h3>
+        <p>Custom-filmed content built around your business — so what people see online matches the quality you actually deliver.</p>
+      </div>
+
+      <div class="benefit-card fade-up" data-delay="0.2">
+        <div class="benefit-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <h3>Show up where customers look</h3>
+        <p>Paid ads run across Meta, TikTok, and Google so the people searching for what you do actually find your business.</p>
+      </div>
+
+      <div class="benefit-card fade-up" data-delay="0.3">
+        <div class="benefit-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+          </svg>
+        </div>
+        <h3>Stop missing calls and leads</h3>
+        <p>A trained remote VA catches every inquiry, books appointments, and runs the follow-up while you stay on the job.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <p class="section-label fade-up">How It Works</p>
+    <h2 class="section-title fade-up" data-delay="0.08">Three Steps to a Better Business</h2>
+
+    <div class="steps-wrap">
+      <div class="step fade-up" data-delay="0.1">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Book a $10 Discovery Call</h3>
+          <p>Pick a time that works for you. The $10 holds your slot and proves you're serious.</p>
+        </div>
+      </div>
+
+      <div class="step fade-up" data-delay="0.2">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>We come prepared</h3>
+          <p>We will review your business and come prepared to understand your goals.</p>
+        </div>
+      </div>
+
+      <div class="step fade-up" data-delay="0.3">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>We map your business</h3>
+          <p>On the call we look at where time is leaking, where leads are dropping, and what's blocking growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR + PAYMENT -->
+  <section class="cal-section" id="calendar">
+    <p class="section-label fade-up">Schedule Your Call</p>
+    <h2 class="section-title fade-up" data-delay="0.08">Pick a Time. Lock It In.</h2>
+
+    <div class="cal-shell">
+      <div class="cal-card fade-up" data-delay="0.16">
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/hNQOU2fxWrZ1ff3y19ft" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="hNQOU2fxWrZ1ff3y19ft_1778088735159"></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-row">
+      <a href="tel:+14049993528">(404) 999-3528</a>
+      <span style="color: var(--gray-mid);">·</span>
+      <a href="mailto:contact@pfxdetailing.com">contact@pfxdetailing.com</a>
+    </div>
+    <div class="footer-row">
+      <span>© 2026 Leone Capital LLC dba PureFX</span>
+      <span style="color: var(--gray-mid);">·</span>
+      <a href="terms.html">Terms</a>
+      <span style="color: var(--gray-mid);">·</span>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <p style="margin-top: 8px;">Results may vary. All businesses are different.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-delay]').forEach(el => {
+      el.style.transitionDelay = el.dataset.delay + 's';
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

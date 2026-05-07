@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms and Conditions — Leone Capital LLC dba PureFX</title>
+  <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-2:       #1a1a1a;
+      --gray:         #2e2e2e;
+      --gray-mid:     #555555;
+      --gray-light:   #a0a0a0;
+      --gray-pale:    #d9d9d9;
+      --white:        #ffffff;
+      --yellow:       #f5c800;
+      --yellow-hover: #e0b500;
+      --display: 'Barlow Condensed', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    h1, h2, .terms-section h2, .back-btn {
+      font-family: var(--display);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-btn  { opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.05s forwards; }
+    header     { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.12s forwards; }
+    .terms-card{ opacity: 0; animation: fadeInUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.24s forwards; }
+
+    .top-bar {
+      background: var(--dark);
+      border-bottom: 1px solid var(--gray);
+      padding: 16px 24px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--yellow);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .back-btn:hover { color: var(--yellow-hover); gap: 10px; }
+
+    header {
+      background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 100%);
+      border-bottom: 3px solid var(--yellow);
+      padding: 52px 24px 44px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .last-updated { font-size: 0.82rem; color: var(--gray-light); }
+
+    main {
+      flex: 1;
+      padding: 56px 24px 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .terms-card {
+      background: var(--dark-2);
+      border: 1px solid var(--gray);
+      border-radius: 10px;
+      padding: 52px 56px;
+      max-width: 780px;
+      width: 100%;
+    }
+
+    .terms-section { margin-bottom: 40px; }
+    .terms-section:last-child { margin-bottom: 0; }
+
+    .terms-section h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .terms-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 16px;
+      background: var(--yellow);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .terms-section p {
+      font-size: 0.95rem;
+      color: var(--gray-pale);
+      line-height: 1.8;
+    }
+
+    .terms-section p a { color: var(--yellow); text-decoration: none; }
+    .terms-section p a:hover { color: var(--yellow-hover); text-decoration: underline; }
+
+    .terms-divider {
+      border: none;
+      border-top: 1px solid var(--gray);
+      margin: 36px 0;
+    }
+
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--gray);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+    }
+
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--yellow); }
+
+    @media (max-width: 640px) {
+      .terms-card { padding: 32px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="back-btn">← Back</a>
+  </div>
+
+  <header>
+    <h1>Terms and Conditions</h1>
+    <p class="last-updated">Last Updated: May 6, 2026</p>
+  </header>
+
+  <main>
+    <div class="terms-card">
+
+      <div class="terms-section fade-up">
+        <h2>1. Company Information</h2>
+        <p>These Terms and Conditions govern your use of services provided by Leone Capital LLC, doing business as PureFX ("Company", "we", "us", or "our"), including PureFX Mobile Detailing and PureFX Small Business Consulting. By accessing our website or purchasing any of our services, you agree to be bound by these terms.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>2. Mobile Detailing Services</h2>
+        <p>PureFX Mobile Detailing provides mobile vehicle cleaning and detailing services at the customer's location within the Atlanta metro service area. Quote estimates are provided in good faith based on customer-supplied information and may be revised on inspection. Final pricing is confirmed before any work begins. Appointments are subject to weather, water and power access at the service location, and vehicle condition.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>3. Discovery Call Payment</h2>
+        <p>The $10 Discovery Call fee for PureFX Small Business Consulting is non-refundable under any circumstances. This fee reserves your time slot and compensates for the preparation and consultation time provided. By completing payment you acknowledge and agree to this no-refund policy.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>4. Consulting Services</h2>
+        <p>Leone Capital LLC dba PureFX provides small business consulting services including systems, marketing, visibility, and growth strategy. All service details, pricing, and deliverables beyond the Discovery Call will be discussed and agreed upon during the call. The $10 Discovery Call fee is separate from and does not apply toward the cost of any subsequent services.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>5. No Guarantee of Results</h2>
+        <p>While we are committed to delivering quality service, Leone Capital LLC makes no guarantees regarding specific business outcomes, revenue increases, or results from the use of our consulting services. Detailing results depend on vehicle condition. Business results vary by business.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>6. Cancellations and Rescheduling</h2>
+        <p>Detailing appointments may be rescheduled with reasonable notice. We reserve the right to reschedule due to weather, equipment failure, or other circumstances outside our control. Rescheduled appointments will be honored at the originally quoted price.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>7. Privacy</h2>
+        <p>We collect personal information including name, email, phone number, vehicle information, and business details solely for the purpose of delivering our services. We do not sell or share your information with third parties without your consent. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>8. Intellectual Property</h2>
+        <p>All content, materials, and processes provided by Leone Capital LLC are the intellectual property of Leone Capital LLC and may not be reproduced or distributed without written permission.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>9. Limitation of Liability</h2>
+        <p>Leone Capital LLC shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services. Our total liability shall not exceed the amount paid for the specific service. Pre-existing damage to vehicles is documented prior to service where reasonably possible; PureFX is not responsible for pre-existing conditions.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>10. Governing Law</h2>
+        <p>These Terms and Conditions are governed by the laws of the State of Georgia, United States.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>11. Contact</h2>
+        <p>For questions regarding these terms contact Leone Capital LLC dba PureFX at <a href="mailto:contact@pfxdetailing.com">contact@pfxdetailing.com</a> or <a href="tel:+14049993528">(404) 999-3528</a>.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Leone Capital LLC dba PureFX &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></p>
+    <p style="margin-top:8px;">Results may vary. All businesses are different.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

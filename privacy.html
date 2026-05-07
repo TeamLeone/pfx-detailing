@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Leone Capital LLC dba PureFX</title>
+  <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-2:       #1a1a1a;
+      --gray:         #2e2e2e;
+      --gray-mid:     #555555;
+      --gray-light:   #a0a0a0;
+      --gray-pale:    #d9d9d9;
+      --white:        #ffffff;
+      --yellow:       #f5c800;
+      --yellow-hover: #e0b500;
+      --display: 'Barlow Condensed', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    h1, h2, .terms-section h2, .back-btn {
+      font-family: var(--display);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-btn  { opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.05s forwards; }
+    header     { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.12s forwards; }
+    .terms-card{ opacity: 0; animation: fadeInUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.24s forwards; }
+
+    .top-bar {
+      background: var(--dark);
+      border-bottom: 1px solid var(--gray);
+      padding: 16px 24px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--yellow);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .back-btn:hover { color: var(--yellow-hover); gap: 10px; }
+
+    header {
+      background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 100%);
+      border-bottom: 3px solid var(--yellow);
+      padding: 52px 24px 44px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .last-updated { font-size: 0.82rem; color: var(--gray-light); }
+
+    main {
+      flex: 1;
+      padding: 56px 24px 80px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .terms-card {
+      background: var(--dark-2);
+      border: 1px solid var(--gray);
+      border-radius: 10px;
+      padding: 52px 56px;
+      max-width: 780px;
+      width: 100%;
+    }
+
+    .terms-section { margin-bottom: 40px; }
+    .terms-section:last-child { margin-bottom: 0; }
+
+    .terms-section h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .terms-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 16px;
+      background: var(--yellow);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .terms-section p {
+      font-size: 0.95rem;
+      color: var(--gray-pale);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .terms-section p:last-child { margin-bottom: 0; }
+
+    .terms-section p a { color: var(--yellow); text-decoration: none; }
+    .terms-section p a:hover { color: var(--yellow-hover); text-decoration: underline; }
+
+    .terms-section ul {
+      list-style: none;
+      margin: 10px 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .terms-section ul li {
+      font-size: 0.95rem;
+      color: var(--gray-pale);
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .terms-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+    }
+
+    .terms-divider {
+      border: none;
+      border-top: 1px solid var(--gray);
+      margin: 36px 0;
+    }
+
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--gray);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+    }
+
+    footer a { color: var(--gray-light); text-decoration: none; }
+    footer a:hover { color: var(--yellow); }
+
+    @media (max-width: 640px) {
+      .terms-card { padding: 32px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="index.html" class="back-btn">← Back</a>
+  </div>
+
+  <header>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last Updated: May 6, 2026</p>
+  </header>
+
+  <main>
+    <div class="terms-card">
+
+      <div class="terms-section fade-up">
+        <h2>1. Company Information</h2>
+        <p>This Privacy Policy describes how Leone Capital LLC, doing business as PureFX ("Company", "we", "us", or "our") collects, uses, and protects your personal information when you visit our website or use our services, including PureFX Mobile Detailing and PureFX Small Business Consulting.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>2. Information We Collect</h2>
+        <p>We collect the following personal information when you fill out a quote, book an appointment, fill out our application form, or otherwise interact with our services:</p>
+        <ul>
+          <li>First and last name</li>
+          <li>Email address</li>
+          <li>Phone number</li>
+          <li>Service location and ZIP code</li>
+          <li>Vehicle type, year, and condition information</li>
+          <li>Business type, size, and revenue range (consulting only)</li>
+          <li>Business challenges and goals (consulting only)</li>
+        </ul>
+        <p>We also collect data automatically through advertising platforms including Meta (Facebook/Instagram), TikTok, and Google when you interact with our ads.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>3. How We Use Your Information</h2>
+        <p>We use your information to:</p>
+        <ul>
+          <li>Contact you regarding your detailing appointment or Discovery Call booking</li>
+          <li>Deliver our mobile detailing and consulting services</li>
+          <li>Send confirmation and reminder emails through Go High Level</li>
+          <li>Improve our marketing and advertising campaigns</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>4. Third Party Services</h2>
+        <p>We use the following third party platforms that may process your data:</p>
+        <ul>
+          <li>Go High Level — CRM, email automation, and calendar booking</li>
+          <li>FastPayDirect — Payment processing for the $10 Discovery Call fee</li>
+          <li>Meta (Facebook/Instagram) — Advertising and lead tracking</li>
+          <li>TikTok — Advertising and lead tracking</li>
+          <li>Google — Advertising and lead tracking</li>
+        </ul>
+        <p>Each of these platforms has their own privacy policy governing how they handle your data.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>5. Cookies and Tracking</h2>
+        <p>Our website and advertising platforms use cookies and tracking pixels including the Meta Pixel, TikTok Pixel, and Google Tag to measure ad performance and optimize our campaigns. By using our website you consent to this tracking.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>6. Data Sharing</h2>
+        <p>We do not sell your personal information to third parties. We only share your data with the service providers listed above as necessary to deliver our services.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>7. Data Retention</h2>
+        <p>We retain your personal information for as long as necessary to deliver our services and comply with legal obligations. You may request deletion of your data at any time by contacting us.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>8. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access the personal information we hold about you</li>
+          <li>Request correction of inaccurate information</li>
+          <li>Request deletion of your personal information</li>
+          <li>Opt out of marketing communications at any time</li>
+        </ul>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>9. Security</h2>
+        <p>We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure. All payment information is processed securely through FastPayDirect.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>10. Children's Privacy</h2>
+        <p>Our services are not directed at individuals under the age of 18. We do not knowingly collect personal information from minors.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.</p>
+      </div>
+
+      <hr class="terms-divider" />
+
+      <div class="terms-section fade-up">
+        <h2>12. Contact</h2>
+        <p>For questions regarding this Privacy Policy contact Leone Capital LLC dba PureFX at <a href="mailto:contact@pfxdetailing.com">contact@pfxdetailing.com</a> or <a href="tel:+14049993528">(404) 999-3528</a>.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Leone Capital LLC dba PureFX &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></p>
+    <p style="margin-top:8px;">Results may vary. All businesses are different.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
