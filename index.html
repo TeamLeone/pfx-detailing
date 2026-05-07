@@ -1898,19 +1898,7 @@
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <div class="carousel-track">
-          <div class="carousel-list" id="carousel-list">
-            <div class="review-slide">
-              <div class="review-stars stars">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </div>
-              <p class="review-text">"This was a great experience and I really appreciate Simeon accommodating me today! Having a toddler can make a car look like WW3 and just day to day activities, but now my car looks and smells amazing and definitely looks like I got it off the lot! Thanks again, Simeon rocks!"</p>
-              <p class="review-author">Torii V<span>Local Guide · 77 reviews</span></p>
-            </div>
-          </div>
+          <div class="carousel-list" id="carousel-list"></div>
         </div>
         <button class="carousel-arrow next" type="button" onclick="moveCarousel(1)" aria-label="Next">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
@@ -2072,7 +2060,13 @@
     const carouselList = document.getElementById('carousel-list');
     const dotsWrap = document.getElementById('carousel-dots');
     let carouselIdx = 0;
-    let totalSlides = carouselList.children.length;
+    let totalSlides = 0;
+
+    const STAR_SVG = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
 
     function buildDots() {
       dotsWrap.innerHTML = '';
@@ -2093,20 +2087,13 @@
       });
     }
     function moveCarousel(dir) { goCarousel(carouselIdx + dir); }
-    buildDots();
 
-    const STAR_SVG = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    }
-
-    function renderReviews(reviews) {
-      carouselList.innerHTML = reviews.map(r => `
+    function renderReviews(items) {
+      carouselList.innerHTML = items.map(r => `
         <div class="review-slide">
           <div class="review-stars stars">${STAR_SVG.repeat(r.rating)}</div>
           <p class="review-text">"${escapeHtml(r.text)}"</p>
-          <p class="review-author">${escapeHtml(r.name)}<span>${escapeHtml(r.source || '')}</span></p>
+          <p class="review-author">${escapeHtml(r.name)}</p>
         </div>
       `).join('');
       totalSlides = carouselList.children.length;
@@ -2115,38 +2102,28 @@
       buildDots();
     }
 
-    async function loadGoogleReviews() {
-      let googleReviews = [];
-      try {
-        const response = await fetch('/api/reviews');
-        if (response.ok) {
-          const data = await response.json();
-          googleReviews = (data.reviews || []).map(review => ({
-            name: review.author_name,
-            rating: review.rating,
-            text: review.text,
-            source: review.relative_time_description || ''
-          }));
-        } else {
-          console.error('Reviews API returned', response.status);
-        }
-      } catch (err) {
-        console.error('Reviews fetch failed:', err);
-      }
+    const reviews = [
+      { name: "Torii V.",   rating: 5, text: "This was a great experience and I really appreciate Simeon accommodating me today! Having a toddler can make a car look like WW3 and just day to day activities, but now my car looks and smells amazing and definitely looks like it got off the lot! Thanks again, Simeon rocks!" },
+      { name: "Maria B.",   rating: 5, text: "Excellent. Josiah was punctual, transparent, and detailed. He sent the best guys he had to get the clear coat on my new BMW. That transparency made me feel a lot better. Would definitely recommend." },
+      { name: "Matthew L.", rating: 5, text: "Devon was professional, explained things well when I had questions and delivered great results. Highly recommended for ceramic coatings and interior cleanings!" },
+      { name: "Tonni M.",   rating: 5, text: "I had a great experience with PureFX Detailing! They did an amazing job on my car — everything looks spotless and professionally done. The attention to detail really stood out, and the service was smooth and efficient. Highly recommend them if you want your car looking brand new!" },
+      { name: "Yolanda",    rating: 5, text: "Raydon did a wonderful job today. He didn't miss anything. I checked his work and my mom did the mom check. Enough said!" },
+      { name: "B W.",       rating: 5, text: "These guys did an outstanding job! My car looks like new!" },
+      { name: "Spencer M.", rating: 5, text: "Great experience, especially being in the city. Devon was prompt, super nice and thorough. Will use him again." },
+      { name: "Alan S.",    rating: 5, text: "My vehicle was spotless. The tech that did my vehicle was very friendly and courteous." },
+      { name: "Richard H.", rating: 5, text: "Let me start by saying I was more than overjoyed with my detail job. Josiah the owner showed up on time and was very professional and he took great care of me and my vehicle. He brought a smile to my wife with his amazing work — we will definitely be using him again in the near future." },
+      { name: "Esha E.",    rating: 5, text: "Josiah was very professional and respectful. The work he did had me screaming from the top of my lungs. He got done within a timely matter and my car looks like it came straight off the dealership. I have no complaints and I recommend him to others — he will always be family to me. Thanks once again." },
+      { name: "Lucas",      rating: 5, text: "Great customer service! Best detail I've ever had on my truck, specifically the interior. Made it very convenient and came to my house at a time that worked best for me! Highly recommend!" },
+      { name: "Adam",       rating: 5, text: "Beyond 5 star service." },
+      { name: "Iesha M.",   rating: 5, text: "Josiah was very professional and informative! My car was riddled with stains, crumbs and dirt and he made it look brand new! The job took less than 2 hours and was very thorough! I'll definitely be using his services again!" },
+      { name: "Angela S.",  rating: 5, text: "Devon did an amazing job with our car. They are very professional and you receive the service you pay for." },
+      { name: "Yu don K.",  rating: 5, text: "Devon did a great job today on my full auto detail. Very communicative and friendly, car looks awesome! Thanks a lot!" },
+      { name: "Camille T.", rating: 5, text: "Devon came out and worked hard in the sun to get my interior car fabrics cleaned and odor free. Would definitely use him again." },
+      { name: "Molly O.",   rating: 5, text: "Great customer service and communication! Devon was so great and professional. My car hasn't been this clean since I bought it — highly recommend! The attention to detail was incredible!" }
+    ];
 
-      const torii = {
-        name: 'Torii V',
-        rating: 5,
-        text: 'This was a great experience and I really appreciate Simeon accommodating me today! Having a toddler can make a car look like WW3 and just day to day activities, but now my car looks and smells amazing and definitely looks like I got it off the lot! Thanks again, Simeon rocks!',
-        source: 'Local Guide · 77 reviews'
-      };
-
-      const allReviews = [...googleReviews, torii];
-      allReviews.sort(() => Math.random() - 0.5);
-      renderReviews(allReviews);
-    }
-
-    loadGoogleReviews();
+    reviews.sort(() => Math.random() - 0.5);
+    renderReviews(reviews);
 
     // ── ZIP CHECKER ──
     function buildZipSet() {
