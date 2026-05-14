@@ -37,7 +37,7 @@
     .est-label, .est-mode, .est-price, .est-time,
     .tier-name, .tier-price, .tier-time, .addon-name, .addon-meta,
     .review-badge, .ba-tag, .yes-label, .yes-strip .yes-label,
-    .sub-heading, .q-label, .hero-badge, .trust-item,
+    .sub-heading, .q-label, .trust-item,
     .cta-btn, .home-btn, .pay-btn,
     .zip-form button, .review-author, .city-label,
     .nav-drawer a {
@@ -200,36 +200,31 @@
         var(--black);
     }
 
-    /* Wrap is just for sizing + fade-in. NO overflow:hidden so the
-       drop-shadow halo on the image inside isn't clipped. Filter sits
-       on the image itself. */
+    /* Solid yellow disc behind the hero logo. Renders cleanly on mobile
+       (glow drop-shadows were too soft / banded on smaller screens). */
     .hero-logo-wrap {
-      width: clamp(440px, 78vw, 920px);
-      max-width: 92vw;
-      margin: 0 auto 40px;
+      width: clamp(240px, 46vw, 420px);
+      aspect-ratio: 1 / 1;
+      max-width: 80vw;
+      margin: 0 auto 28px;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: visible;
+      background: var(--yellow);
+      border-radius: 50%;
+      overflow: hidden;
     }
 
     .hero-logo {
       display: block;
-      width: 100%;
+      width: 82%;
       height: auto;
       position: relative;
-      /* Nudge 2.5% left from flex-centered position. */
-      transform: translateX(-2.5%) !important;
-      mix-blend-mode: lighten;
-      filter: drop-shadow(0 0 80px rgba(245, 200, 0, 1)) drop-shadow(0 0 160px rgba(245, 200, 0, 0.9)) !important;
     }
 
-    /* Sub-wordmark — flows as a sibling below the logo wrap.
-       Negative margin-top pulls it up into the wrap's empty bottom area
-       (where the file's blended-out PUREFX text used to sit), so it reads
-       as part of the logo without overlapping the visible gold mark. */
+    /* Sub-wordmark below the disc. */
     .hero-logo-tagline {
-      margin: clamp(-128px, -8vw, -40px) auto 24px;
+      margin: 0 auto 24px;
       font-family: var(--display);
       font-size: clamp(0.85rem, 1.5vw, 1.1rem);
       font-weight: 700;
@@ -237,7 +232,6 @@
       text-transform: uppercase;
       color: var(--white);
       text-align: center;
-      transform: translateX(-1%);
       white-space: nowrap;
     }
 
@@ -328,26 +322,6 @@
       color: var(--black);
       transform: translateY(-2px);
     }
-
-    .hero-badges {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .hero-badge {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--gray-pale);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .hero-badge svg { color: var(--yellow); flex-shrink: 0; }
 
     /* ── TRUST BAR ── */
     .trust-bar {
@@ -1002,21 +976,6 @@
       margin-top: 16px;
     }
 
-    /* Calendar embed */
-    .cal-card {
-      background: var(--dark);
-      border: 1px solid var(--gray);
-      border-radius: 16px;
-      padding: 24px;
-    }
-
-    .cal-card iframe {
-      display: block;
-      width: 100%;
-      border: none;
-      min-height: 720px;
-    }
-
     /* ── SEE OUR WORK ── */
     .work { background: var(--black); }
 
@@ -1407,6 +1366,105 @@
       margin-bottom: 8px;
     }
 
+    /* ── SOCIAL LINKS ── */
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: var(--gray-pale);
+      background: transparent;
+      border: 1px solid var(--gray);
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .social-icon:hover {
+      color: var(--black);
+      background: var(--yellow);
+      border-color: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    .social-icon svg { width: 18px; height: 18px; display: block; }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-social {
+      grid-column: 3;
+      justify-self: end;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-social .social-icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    .nav-social .social-icon svg { width: 16px; height: 16px; }
+
+    .drawer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray);
+    }
+
+    /* Quote follow-up CTA block */
+    .quote-followup {
+      background: var(--dark-2);
+      padding: 0 24px 64px;
+    }
+
+    .quote-followup-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--dark);
+      border: 1px solid var(--gray);
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .quote-followup p {
+      color: var(--gray-pale);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin: 0 auto 22px;
+      max-width: 560px;
+    }
+
+    .quote-followup .followup-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .quote-followup .followup-actions .btn-primary,
+    .quote-followup .followup-actions .btn-secondary {
+      padding: 14px 26px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 880px) {
+      .nav-social { display: none; }
+      .quote-followup { padding: 0 18px 48px; }
+      .quote-followup-inner { padding: 28px 22px; }
+    }
+
     /* ── SCROLL ANIMATIONS ── */
     .fade-up {
       opacity: 0;
@@ -1443,11 +1501,6 @@
       opacity: 0;
       animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s forwards;
     }
-    .hero-badges {
-      opacity: 0;
-      animation: fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.62s forwards;
-    }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 1080px) {
       .nav-links { gap: 22px; }
@@ -1469,7 +1522,6 @@
 
       .hero { padding: 32px 20px 44px; min-height: auto; }
       .hero-sub { white-space: normal; max-width: 540px; }
-      .hero-badges { gap: 18px; }
       .trust-bar { gap: 22px; padding: 14px 20px; }
       .trust-item { font-size: 0.74rem; letter-spacing: 0.04em; }
       .section { padding: 44px 18px; }
@@ -1542,6 +1594,14 @@
         <li><a href="#area">Service Area</a></li>
         <li><a href="consulting.html" class="nav-gold">PureFX Small Business Consulting</a></li>
       </ul>
+      <div class="nav-social" aria-label="Social media">
+        <a href="https://www.instagram.com/purefxdetailing/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.22 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74.04 8.33.05 7.05.11 2.7.31.28 2.73.08 7.09.02 8.37 0 8.78 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.74 2.7 21.32.28 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/p/Purefx-Mobile-Detailing-61564989986162/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.001c-1.5 0-1.8.72-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg>
+        </a>
+      </div>
       <button class="nav-toggle" type="button" aria-label="Open menu" onclick="document.getElementById('drawer').classList.toggle('open')">
         <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -1557,17 +1617,25 @@
       <li><a href="#area" onclick="document.getElementById('drawer').classList.remove('open')">Service Area</a></li>
       <li><a href="consulting.html" class="nav-gold">PureFX Small Business Consulting</a></li>
     </ul>
+    <div class="drawer-social" aria-label="Social media">
+      <a href="https://www.instagram.com/purefxdetailing/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.22 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74.04 8.33.05 7.05.11 2.7.31.28 2.73.08 7.09.02 8.37 0 8.78 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.74 2.7 21.32.28 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/p/Purefx-Mobile-Detailing-61564989986162/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.001c-1.5 0-1.8.72-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg>
+      </a>
+    </div>
   </div>
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="hero-logo-wrap"><img src="pfx-marketing-media/pfx-vector.PNG" alt="PureFX Mobile Detailing" class="hero-logo" /></div>
+    <div class="hero-logo-wrap"><img src="pfx-marketing-media/pfx-vector-transparent.png" alt="PureFX Mobile Detailing" class="hero-logo" /></div>
     <div class="hero-logo-tagline">Mobile Detailing</div>
     <h1>
       <span class="line">Pure Results.</span>
       <span class="line accent">Zero Hassle.</span>
     </h1>
-    <p class="hero-sub">Atlanta mobile service. Interior reset + exterior shine at your location.</p>
+    <p class="hero-sub">Servicing ATL and the surrounding cities.</p>
     <div class="hero-buttons">
       <a href="#quote" class="btn-primary">
         Get a Free Quote
@@ -1577,20 +1645,6 @@
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
         Call (404) 999-3528
       </a>
-    </div>
-    <div class="hero-badges">
-      <div class="hero-badge">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-        100% Mobile
-      </div>
-      <div class="hero-badge">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Flexible Scheduling
-      </div>
-      <div class="hero-badge">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        5-Star Results
-      </div>
     </div>
   </section>
 
@@ -1616,7 +1670,7 @@
             <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M3.5 11.5h6"/><path d="M14.5 11.5h6"/><path d="M12 14.5v6"/></svg>
           </div>
           <h3>Interior Services</h3>
-          <p class="lead">From a light refresh to a deep thorough clean — we restore your cabin to showroom condition.</p>
+          <p class="lead">From a light refresh to a deep thorough clean — we can restore your cabin to showroom condition.</p>
           <button class="service-toggle" type="button" onclick="toggleService(this)">
             See what's available
             <svg class="chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1633,6 +1687,7 @@
               <li>Ozone purification</li>
               <li>UV Protectant &amp; Interior Dressing</li>
               <li>Air Restoration Treatment</li>
+              <li>Mold/Mildew Mitigation</li>
               <li>Pet hair removal</li>
               <li>Odor elimination</li>
             </ul>
@@ -1644,7 +1699,7 @@
             <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 11l1.5-7.5h11L19 11"/><path d="M3 11h18l-1 8a2 2 0 01-2 2H6a2 2 0 01-2-2l-1-8z"/><circle cx="8" cy="16" r="1.4"/><circle cx="16" cy="16" r="1.4"/></svg>
           </div>
           <h3>Exterior Services</h3>
-          <p class="lead">From a premium hand wash to full paint correction — we make your exterior turn heads.</p>
+          <p class="lead">From a premium hand wash to full paint correction — we can make your exterior turn heads.</p>
           <button class="service-toggle" type="button" onclick="toggleService(this)">
             See what's available
             <svg class="chev" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1655,12 +1710,15 @@
               <li>Hand wash with premium products</li>
               <li>Clay bar treatment</li>
               <li>Careful hand drying</li>
+              <li>Hand Wax</li>
               <li>Tire dressing and shine</li>
               <li>Window cleaning outside</li>
               <li>Trim restoration</li>
               <li>One-Step Paint Correction</li>
               <li>Two-Step Paint Correction</li>
-              <li>Ceramic Coating</li>
+              <li>Paint Ceramic Coating</li>
+              <li>Ceramic Spray Sealant</li>
+              <li>Wheel &amp; Glass Ceramic Coating</li>
             </ul>
           </div>
         </div>
@@ -1682,12 +1740,11 @@
             <div class="qp-step active" data-step="1"></div>
             <div class="qp-step" data-step="2"></div>
             <div class="qp-step" data-step="3"></div>
-            <div class="qp-step" data-step="4"></div>
           </div>
 
           <!-- STEP 1 -->
           <div class="step active" data-step="1">
-            <p class="step-label">Step 1 of 4 — Vehicle</p>
+            <p class="step-label">Step 1 of 3 — Vehicle</p>
             <h3>Tell us about your vehicle</h3>
 
             <div class="q-group">
@@ -1702,8 +1759,8 @@
             <div class="q-group">
               <label class="q-label">Vehicle year</label>
               <div class="opt-row" data-field="vehicleYear">
-                <button type="button" class="opt" data-value="newer">2011 or newer</button>
-                <button type="button" class="opt" data-value="older">2010 or older</button>
+                <button type="button" class="opt" data-value="newer">2016 or newer</button>
+                <button type="button" class="opt" data-value="older">2015 or older</button>
               </div>
             </div>
 
@@ -1725,7 +1782,7 @@
 
           <!-- STEP 2 -->
           <div class="step" data-step="2">
-            <p class="step-label">Step 2 of 4 — Category</p>
+            <p class="step-label">Step 2 of 3 — Category</p>
             <h3>What do you need?</h3>
 
             <div class="q-group">
@@ -1745,7 +1802,7 @@
 
           <!-- STEP 3 -->
           <div class="step" data-step="3">
-            <p class="step-label">Step 3 of 4 — Services</p>
+            <p class="step-label">Step 3 of 3 — Services</p>
             <h3>Select your services</h3>
 
             <div class="q-group">
@@ -1809,23 +1866,6 @@
 
             <div class="quote-nav">
               <button type="button" class="qbtn ghost" onclick="prevStep(3)">← Back</button>
-              <button type="button" class="qbtn" onclick="nextStep(3)">Next →</button>
-            </div>
-          </div>
-
-          <!-- STEP 4 -->
-          <div class="step" data-step="4">
-            <p class="step-label">Step 4 of 4 — Schedule</p>
-            <h3>One Last Step — Pick Your Date &amp; Time</h3>
-            <p style="color: var(--gray-light); font-size: 0.95rem; margin-bottom: 22px;">Your estimate is ready. Now lock in your appointment.</p>
-
-            <div class="cal-card">
-              <iframe src="https://api.leadconnectorhq.com/widget/booking/WmW4VggcE5sk7xhDnTc6" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="WmW4VggcE5sk7xhDnTc6_1778088776097"></iframe>
-              <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
-            </div>
-
-            <div class="quote-nav">
-              <button type="button" class="qbtn ghost" onclick="prevStep(4)">← Back</button>
               <span></span>
             </div>
           </div>
@@ -1845,9 +1885,30 @@
               <div id="est-summary"></div>
             </div>
           </div>
-          <p class="est-note">Estimate reflects your selected package and add-on. Condition factors may affect the final price — our technician will confirm before any work begins.</p>
+          <p class="est-note">Estimate reflects your selected package and add-on. Condition factors may affect the final price — our technician will confirm before any work begins. The purpose of this form is so that we can accurately communicate, assess, and book your vehicle for the care it deserves.</p>
         </aside>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FOLLOW-UP CTA -->
+  <section class="quote-followup">
+    <div class="quote-followup-inner fade-up">
+      <p>Fill out the quote builder above so we can get to know your vehicle. We will reach out to you within 12 hours. Or you can call/DM us to book right now.</p>
+      <div class="followup-actions">
+        <a href="tel:+14049993528" class="btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          Call (404) 999-3528
+        </a>
+      </div>
+      <div class="social-row" aria-label="Social media">
+        <a href="https://www.instagram.com/purefxdetailing/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.22 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74.04 8.33.05 7.05.11 2.7.31.28 2.73.08 7.09.02 8.37 0 8.78 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.74 2.7 21.32.28 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/p/Purefx-Mobile-Detailing-61564989986162/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.001c-1.5 0-1.8.72-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1942,6 +2003,14 @@
 
   <!-- FOOTER -->
   <footer>
+    <div class="social-row" style="margin-bottom: 18px;" aria-label="Social media">
+      <a href="https://www.instagram.com/purefxdetailing/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.22 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74.04 8.33.05 7.05.11 2.7.31.28 2.73.08 7.09.02 8.37 0 8.78 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.74 2.7 21.32.28 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/p/Purefx-Mobile-Detailing-61564989986162/" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.001c-1.5 0-1.8.72-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg>
+      </a>
+    </div>
     <div class="footer-row">
       <a href="tel:+14049993528">(404) 999-3528</a>
       <span style="color: var(--gray-mid);">·</span>
