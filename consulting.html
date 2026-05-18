@@ -7,11 +7,11 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <title>PureFX Small Business Consulting — Less Work. More Money.</title>
-  <meta name="description" content="We help small business owners build systems, get visible, and grow — without burning out. Book your $10 Discovery Call." />
+  <meta name="description" content="We help small business owners build systems, get visible, and grow — without burning out. Schedule a free call today." />
   <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,7 +27,7 @@
       --yellow: #f5c800;
       --yellow-hover: #e0b500;
       --yellow-soft: #fff8d6;
-      --display: 'Barlow Condensed', 'Segoe UI', system-ui, sans-serif;
+      --display: 'Bebas Neue', 'Segoe UI', system-ui, sans-serif;
     }
 
     h1, h2, h3, h4, h5, h6,
@@ -131,36 +131,41 @@
       text-align: center;
     }
 
-    /* Wrap handles sizing + fade-in only. Filter goes on the image. */
+    /* Wrap handles sizing + fade-in only. */
     .hero-logo-wrap {
-      width: clamp(440px, 78vw, 920px);
-      max-width: 92vw;
-      margin: 0 auto 0;
+      width: clamp(260px, 38vw, 360px);
+      aspect-ratio: 1 / 1;
+      max-width: 75vw;
+      margin: 0 auto 14px;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: visible;
+      position: relative;
       opacity: 0;
       animation: heroLogoFade 0.8s cubic-bezier(0.22,1,0.36,1) 0.05s forwards;
     }
 
-    .hero-logo {
-      display: block;
-      width: 100%;
-      height: auto;
-      position: relative;
-      /* Nudge 2% left from flex-centered position. */
-      transform: translateX(-2%) !important;
-      mix-blend-mode: lighten;
-      filter: drop-shadow(0 0 80px rgba(245, 200, 0, 1)) drop-shadow(0 0 160px rgba(245, 200, 0, 0.9)) !important;
+    .hero-logo-wrap::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 55%;
+      aspect-ratio: 1 / 1;
+      background: var(--yellow);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
     }
 
-    /* Sub-wordmark — flows as a sibling below the logo wrap.
-       Negative margin-top pulls it up into the wrap's empty bottom area
-       (where the file's blended-out PUREFX text used to sit), so it reads
-       as part of the logo without overlapping the visible gold mark. */
+    .hero-logo {
+      display: block;
+      width: 95%;
+      height: auto;
+      position: relative;
+      mix-blend-mode: multiply;
+    }
+
     .hero-logo-tagline {
-      margin: clamp(-80px, -5vw, -32px) auto 24px;
+      margin: 0 auto 24px;
       font-family: var(--display);
       font-size: clamp(0.85rem, 1.5vw, 1.1rem);
       font-weight: 700;
@@ -168,7 +173,6 @@
       text-transform: uppercase;
       color: var(--white);
       text-align: center;
-      transform: translateX(-0.5%);
       white-space: nowrap;
     }
 
@@ -774,7 +778,7 @@
     <p class="hero-sub">
       We help small business owners build systems, get visible, and grow — without burning out.
     </p>
-    <a href="#calendar" class="cta-btn">Book a $10 Discovery Call</a>
+    <a href="#calendar" class="cta-btn">Schedule a Free Call</a>
     <p class="hero-note">No commitment. Real strategy.</p>
   </section>
 
@@ -791,10 +795,6 @@
     <div class="trust-item">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
       Real Strategy
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-      $10 to Start
     </div>
     <div class="trust-item">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
@@ -907,8 +907,8 @@
       <div class="step fade-up" data-delay="0.1">
         <div class="step-num">1</div>
         <div class="step-content">
-          <h3>Book a $10 Discovery Call</h3>
-          <p>Pick a time that works for you. The $10 holds your slot and proves you're serious.</p>
+          <h3>Schedule a Free Call</h3>
+          <p>Pick a time that works for you. No commitment — just a real conversation about your business.</p>
         </div>
       </div>
 
@@ -930,10 +930,10 @@
     </div>
   </section>
 
-  <!-- CALENDAR + PAYMENT -->
+  <!-- CALENDAR -->
   <section class="cal-section" id="calendar">
     <p class="section-label fade-up">Schedule Your Call</p>
-    <h2 class="section-title fade-up" data-delay="0.08">Pick a Time. Lock It In.</h2>
+    <h2 class="section-title fade-up" data-delay="0.08">Pick a Time. Let's Talk.</h2>
 
     <div class="cal-shell">
       <div class="cal-card fade-up" data-delay="0.16">

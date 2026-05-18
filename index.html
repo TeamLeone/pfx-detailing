@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -28,7 +28,7 @@
       --yellow-hover: #e0b500;
       --yellow-soft: #fff8d6;
       --pill: 999px;
-      --display: 'Barlow Condensed', 'Segoe UI', system-ui, sans-serif;
+      --display: 'Bebas Neue', 'Segoe UI', system-ui, sans-serif;
     }
 
     /* Display font applied to headings, nav, buttons, labels */
@@ -204,10 +204,10 @@
     }
 
     .hero-logo-wrap {
-      width: clamp(220px, 38vw, 360px);
+      width: clamp(260px, 38vw, 360px);
       aspect-ratio: 1 / 1;
-      max-width: 70vw;
-      margin: 0 auto 4px;
+      max-width: 75vw;
+      margin: 0 auto 14px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -228,7 +228,7 @@
 
     .hero-logo {
       display: block;
-      width: 82%;
+      width: 95%;
       height: auto;
       position: relative;
       mix-blend-mode: multiply;
@@ -1416,7 +1416,7 @@
       .nav-toggle { display: block; }
       .mobile-bar { display: flex; }
 
-      .hero { padding: 32px 20px 44px; min-height: auto; }
+      .hero { padding: 32px 20px 44px; min-height: calc(100vh - 60px); }
       .hero-sub { white-space: normal; max-width: 540px; }
       .trust-bar { gap: 22px; padding: 14px 20px; }
       .trust-item { font-size: 0.74rem; letter-spacing: 0.04em; }
