@@ -55,10 +55,10 @@
     }
 
     .hero-logo-wrap {
-      width: clamp(260px, 38vw, 360px);
+      width: clamp(180px, 28vw, 260px);
       aspect-ratio: 1 / 1;
-      max-width: 75vw;
-      margin: 0 auto 14px;
+      max-width: 68vw;
+      margin: 40px auto 12px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -68,8 +68,9 @@
     .hero-logo-wrap::before {
       content: "";
       position: absolute;
-      top: 50%; left: 50%;
-      width: 55%;
+      top: 50%;
+      left: 50%;
+      width: 100%;
       aspect-ratio: 1 / 1;
       background: var(--yellow);
       border-radius: 50%;
@@ -78,9 +79,10 @@
 
     .hero-logo {
       display: block;
-      width: 95%;
+      width: 82%;
       height: auto;
       position: relative;
+      z-index: 1;
       mix-blend-mode: multiply;
     }
 
