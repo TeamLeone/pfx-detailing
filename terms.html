@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <title>Terms and Conditions — Leone Capital LLC dba PureFX</title>
   <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -168,6 +171,37 @@
     @media (max-width: 640px) {
       .terms-card { padding: 32px 22px; }
     }
+
+    /* ── LOGO DISC (consistent with index.html / consulting.html) ── */
+    .hero-logo-wrap {
+      width: clamp(100px, 16vw, 160px);
+      aspect-ratio: 1 / 1;
+      max-width: 50vw;
+      margin: 0 auto 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-logo-wrap::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 55%;
+      aspect-ratio: 1 / 1;
+      background: var(--yellow);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-logo {
+      display: block;
+      width: 82%;
+      height: auto;
+      position: relative;
+      mix-blend-mode: multiply;
+    }
   </style>
 </head>
 <body>
@@ -177,6 +211,9 @@
   </div>
 
   <header>
+    <div class="hero-logo-wrap">
+      <img src="pfx-marketing-media/pfx-vector.PNG" alt="PureFX" class="hero-logo" />
+    </div>
     <h1>Terms and Conditions</h1>
     <p class="last-updated">Last Updated: May 6, 2026</p>
   </header>

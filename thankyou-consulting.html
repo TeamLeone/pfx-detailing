@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <title>You're In! — PureFX Discovery Call Confirmed</title>
   <link rel="icon" type="image/png" href="pfx-marketing-media/pfx-vector.PNG" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -235,11 +238,44 @@
     header h1  { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.28s forwards; }
     header .sub{ opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.4s forwards; }
     main       { opacity: 0; animation: fadeInUp 0.75s cubic-bezier(0.22,1,0.36,1) 0.52s forwards; }
+
+    /* ── LOGO DISC ── */
+    .hero-logo-wrap {
+      width: clamp(80px, 12vw, 120px);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-logo-wrap::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 55%;
+      aspect-ratio: 1 / 1;
+      background: var(--yellow);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-logo {
+      display: block;
+      width: 82%;
+      height: auto;
+      position: relative;
+      mix-blend-mode: multiply;
+    }
   </style>
 </head>
 <body>
 
   <header>
+    <div class="hero-logo-wrap">
+      <img src="pfx-marketing-media/pfx-vector.PNG" alt="PureFX" class="hero-logo" />
+    </div>
     <div class="checkmark">
       <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12"/>
