@@ -50,7 +50,7 @@
     .hero {
       background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 100%);
       border-bottom: 3px solid var(--yellow);
-      padding: 64px 24px 56px;
+      padding: 124px 24px 56px;
       text-align: center;
     }
 
@@ -617,9 +617,198 @@
       .submit-box { padding: 36px 20px; }
       .roles-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── SHARED SITE NAV ── */
+    .topnav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 1000;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      overflow: visible;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--gray-pale, #d9d9d9);
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--yellow, #f5c800); }
+
+    .nav-links a.nav-gold {
+      color: var(--yellow, #f5c800);
+      font-weight: 800;
+    }
+
+    .nav-links a.nav-gold:hover { color: var(--yellow-hover, #e0b500); }
+
+    .nav-social {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white, #ffffff);
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: var(--gray-pale, #d9d9d9);
+      background: transparent;
+      border: 1px solid var(--gray, #2e2e2e);
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    .social-icon:hover {
+      color: var(--black, #0a0a0a);
+      background: var(--yellow, #f5c800);
+      border-color: var(--yellow, #f5c800);
+      transform: translateY(-2px);
+    }
+
+    .social-icon svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-drawer {
+      position: fixed;
+      top: 60px;
+      left: 0; right: 0;
+      background: var(--dark, #111111);
+      border-bottom: 1px solid var(--gray, #2e2e2e);
+      padding: 18px 24px 22px;
+      transform: translateY(-110%);
+      transition: transform 0.25s ease;
+      z-index: 998;
+      display: none;
+    }
+
+    .nav-drawer.open { transform: translateY(0); }
+
+    .nav-drawer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .nav-drawer a {
+      color: var(--gray-pale, #d9d9d9);
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+      padding: 6px 0;
+    }
+
+    .nav-drawer a.nav-gold { color: var(--yellow, #f5c800); }
+
+    .drawer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray, #2e2e2e);
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .nav-links { display: none; }
+      .nav-social { display: none; }
+      .nav-toggle { display: block; }
+      .nav-drawer { display: block; }
+      body { padding-top: 60px !important; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- SITE NAV -->
+  <nav class="topnav">
+    <div class="nav-inner">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#work">See Our Work</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="purefx-careers.html">Careers</a></li>
+        <li><a href="consulting.html" class="nav-gold">PureFX Small Business Consulting</a></li>
+      </ul>
+      <div class="nav-social" aria-label="Social media">
+        <a href="https://www.instagram.com/purefxdetailing/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.22 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74.04 8.33.05 7.05.11 2.7.31.28 2.73.08 7.09.02 8.37 0 8.78 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.74 2.7 21.32.28 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+        <a href="https://www.facebook.com/p/Purefx-Mobile-Detailing-61564989986162/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.001c-1.5 0-1.8.72-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg></a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Open menu" onclick="document.getElementById('drawer').classList.toggle('open')"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </nav>
+
+  <div class="nav-drawer" id="drawer">
+    <ul>
+      <li><a href="index.html" onclick="document.getElementById('drawer').classList.remove('open')">Home</a></li>
+      <li><a href="index.html#services" onclick="document.getElementById('drawer').classList.remove('open')">Services</a></li>
+      <li><a href="index.html#work" onclick="document.getElementById('drawer').classList.remove('open')">See Our Work</a></li>
+      <li><a href="index.html#reviews" onclick="document.getElementById('drawer').classList.remove('open')">Reviews</a></li>
+      <li><a href="purefx-careers.html" onclick="document.getElementById('drawer').classList.remove('open')">Careers</a></li>
+      <li><a href="consulting.html" class="nav-gold">PureFX Small Business Consulting</a></li>
+    </ul>
+    <div class="drawer-social" aria-label="Social media">
+      <a href="https://www.instagram.com/purefxdetailing/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.26.07 1.64.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.22-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85.15-3.22 1.66-4.77 4.92-4.92C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74.04 8.33.05 7.05.11 2.7.31.28 2.73.08 7.09.02 8.37 0 8.78 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.74 2.7 21.32.28 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zm0 10.16a4 4 0 110-8 4 4 0 010 8zm6.41-11.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+      <a href="https://www.facebook.com/p/Purefx-Mobile-Detailing-61564989986162/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.68 0H1.32C.59 0 0 .59 0 1.32v21.36C0 23.41.59 24 1.32 24h11.5v-9.29H9.69v-3.62h3.13V8.41c0-3.1 1.89-4.79 4.66-4.79 1.32 0 2.46.1 2.79.14v3.24l-1.92.001c-1.5 0-1.8.72-1.8 1.76v2.31h3.59l-.47 3.62h-3.12V24h6.12c.73 0 1.32-.59 1.32-1.32V1.32C24 .59 23.41 0 22.68 0z"/></svg></a>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -861,5 +1050,16 @@
     }
   </script>
 
+
+  <script>
+    // Close drawer when clicking outside
+    document.addEventListener('click', function(e) {
+      var drawer = document.getElementById('drawer');
+      var toggle = document.querySelector('.nav-toggle');
+      if (drawer && toggle && !drawer.contains(e.target) && !toggle.contains(e.target)) {
+        drawer.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
