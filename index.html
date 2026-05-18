@@ -39,7 +39,7 @@
     .review-badge, .ba-tag, .yes-label, .yes-strip .yes-label,
     .sub-heading, .q-label, .trust-item,
     .cta-btn, .home-btn, .pay-btn,
-    .zip-form button, .review-author, .city-label,
+    .review-author,
     .nav-drawer a {
       font-family: var(--display);
       font-feature-settings: "tnum" 1;
@@ -204,7 +204,7 @@
       width: clamp(220px, 38vw, 360px);
       aspect-ratio: 1 / 1;
       max-width: 70vw;
-      margin: 0 auto 28px;
+      margin: 0 auto 4px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1238,122 +1238,6 @@
       justify-content: center;
     }
 
-    /* ── SERVICE AREA ── */
-    .area { background: var(--black); }
-
-    .map-card {
-      max-width: 760px;
-      margin: 0 auto;
-      background: linear-gradient(180deg, var(--dark-2) 0%, var(--dark) 100%);
-      border: 1px solid var(--gray);
-      border-radius: 18px;
-      padding: 48px 36px;
-      text-align: center;
-    }
-
-    .map-graphic {
-      width: 240px;
-      height: 240px;
-      margin: 0 auto 32px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .map-graphic .ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 2px dashed var(--gray-mid);
-      animation: spin 60s linear infinite;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .map-graphic .r1 { width: 100%; height: 100%; }
-    .map-graphic .r2 { width: 75%; height: 75%; border-color: rgba(245,200,0,0.25); animation-direction: reverse; animation-duration: 45s; }
-    .map-graphic .r3 { width: 50%; height: 50%; border-color: rgba(245,200,0,0.4); animation-duration: 30s; }
-
-    .map-graphic .pin {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      background: var(--yellow);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--black);
-      box-shadow: 0 0 0 6px rgba(245,200,0,0.18), 0 6px 24px rgba(245,200,0,0.4);
-      z-index: 2;
-    }
-
-    .map-graphic .city-label {
-      position: absolute;
-      bottom: -32px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray-pale);
-    }
-
-    .zip-form {
-      display: flex;
-      gap: 10px;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-
-    .zip-form input {
-      flex: 1;
-      background: var(--gray);
-      border: 1px solid var(--gray-mid);
-      border-radius: var(--pill);
-      color: var(--white);
-      font-size: 1rem;
-      font-family: inherit;
-      padding: 14px 22px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .zip-form input:focus {
-      border-color: var(--yellow);
-      box-shadow: 0 0 0 3px rgba(245,200,0,0.12);
-    }
-
-    .zip-form button {
-      background: var(--yellow);
-      color: var(--black);
-      border: none;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      padding: 0 26px;
-      border-radius: var(--pill);
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 0.92rem;
-      transition: background 0.2s;
-    }
-
-    .zip-form button:hover { background: var(--yellow-hover); }
-
-    .zip-result {
-      margin-top: 18px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      min-height: 24px;
-    }
-
-    .zip-result.ok { color: var(--yellow); }
-    .zip-result.no { color: #ff8b8b; }
-
     /* ── FOOTER ── */
     footer {
       background: var(--dark);
@@ -1542,9 +1426,6 @@
       .carousel-arrow.prev { left: -8px; }
       .carousel-arrow.next { right: -8px; }
 
-      .map-card { padding: 36px 22px; }
-      .map-graphic { width: 200px; height: 200px; }
-
       .yes-strip { gap: 16px; padding: 20px 22px; }
 
       .btn-primary, .btn-secondary { padding: 16px 28px; font-size: 0.95rem; }
@@ -1585,8 +1466,6 @@
     @media (max-width: 460px) {
       .opt-row { grid-template-columns: 1fr 1fr; }
       .conditions-grid { grid-template-columns: 1fr; }
-      .zip-form { flex-direction: column; }
-      .zip-form button { padding: 14px 22px; }
     }
   </style>
 </head>
@@ -1600,7 +1479,6 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#work">See Our Work</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#area">Service Area</a></li>
         <li><a href="#">Careers</a></li>
         <li><a href="consulting.html" class="nav-gold">PureFX Small Business Consulting</a></li>
       </ul>
@@ -1624,7 +1502,6 @@
       <li><a href="#services" onclick="document.getElementById('drawer').classList.remove('open')">Services</a></li>
       <li><a href="#work" onclick="document.getElementById('drawer').classList.remove('open')">See Our Work</a></li>
       <li><a href="#reviews" onclick="document.getElementById('drawer').classList.remove('open')">Reviews</a></li>
-      <li><a href="#area" onclick="document.getElementById('drawer').classList.remove('open')">Service Area</a></li>
       <li><a href="#" onclick="document.getElementById('drawer').classList.remove('open')">Careers</a></li>
       <li><a href="consulting.html" class="nav-gold">PureFX Small Business Consulting</a></li>
     </ul>
@@ -1985,33 +1862,6 @@
     </div>
   </section>
 
-  <!-- SERVICE AREA -->
-  <section class="section area" id="area">
-    <div class="section-inner">
-      <p class="section-eyebrow fade-up">Where We Serve</p>
-      <h2 class="section-title fade-up" data-delay="0.08">Service Area</h2>
-      <p class="section-sub fade-up" data-delay="0.16">Serving Atlanta + nearby areas. Not sure? Check your ZIP code below.</p>
-
-      <div class="map-card fade-up" data-delay="0.22">
-        <div class="map-graphic">
-          <div class="ring r1"></div>
-          <div class="ring r2"></div>
-          <div class="ring r3"></div>
-          <div class="pin">
-            <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <span class="city-label">Atlanta, GA</span>
-        </div>
-
-        <form class="zip-form" onsubmit="checkZip(event)">
-          <input type="text" id="zip-input" placeholder="Enter your ZIP code" maxlength="5" inputmode="numeric" pattern="[0-9]{5}" required />
-          <button type="submit">Check Availability</button>
-        </form>
-        <div class="zip-result" id="zip-result"></div>
-      </div>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer>
     <div class="social-row" style="margin-bottom: 18px;" aria-label="Social media">
@@ -2204,34 +2054,6 @@
 
     reviews.sort(() => Math.random() - 0.5);
     renderReviews(reviews);
-
-    // ── ZIP CHECKER ──
-    function buildZipSet() {
-      const zips = new Set();
-      for (let z = 30301; z <= 30350; z++) zips.add(String(z));
-      ['30354','30360','30363','30368','30369','30370','30371','30374','30375','30376','30377','30378','30380','30384','30385','30388','30392','30394','30396','30398','30401']
-        .forEach(z => zips.add(z));
-      return zips;
-    }
-    const acceptedZips = buildZipSet();
-
-    function checkZip(e) {
-      e.preventDefault();
-      const v = document.getElementById('zip-input').value.trim();
-      const out = document.getElementById('zip-result');
-      if (!/^\d{5}$/.test(v)) {
-        out.className = 'zip-result no';
-        out.textContent = 'Please enter a valid 5-digit ZIP.';
-        return;
-      }
-      if (acceptedZips.has(v)) {
-        out.className = 'zip-result ok';
-        out.innerHTML = `✓ Yes! We service ${v}. <a href="#quote" style="color:var(--yellow); text-decoration:underline;">Get your quote →</a>`;
-      } else {
-        out.className = 'zip-result no';
-        out.innerHTML = `Sorry, ${v} is just outside our area — but call us at <a href="tel:+14049993528" style="color:var(--yellow); text-decoration:underline;">(404) 999-3528</a>, we may still be able to help.`;
-      }
-    }
 
     // ════════════════════════════════════════════════════════════════
     // QUOTE BUILDER LOGIC
