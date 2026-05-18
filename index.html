@@ -201,16 +201,26 @@
     }
 
     .hero-logo-wrap {
-      width: clamp(105px, 18vw, 165px);
+      width: clamp(220px, 38vw, 360px);
       aspect-ratio: 1 / 1;
-      max-width: 45vw;
+      max-width: 70vw;
       margin: 0 auto 28px;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }
+
+    .hero-logo-wrap::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 55%;
+      aspect-ratio: 1 / 1;
       background: var(--yellow);
       border-radius: 50%;
-      overflow: hidden;
+      transform: translate(-50%, -50%);
     }
 
     .hero-logo {
